@@ -1,0 +1,19 @@
+{
+    "name": "soyhuce/phpunit-to-cobertura",
+    "description": "Generates a cobertura code coverage report from phpunit",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bastien Philippe",
+            "email": "bastien.philippe@soyhuce.fr"
+        }
+    ],
+    "require": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    }
+}
