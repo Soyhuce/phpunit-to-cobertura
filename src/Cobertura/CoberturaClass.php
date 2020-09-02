@@ -117,12 +117,9 @@ class CoberturaClass
         $class->setAttribute('branch-rate', (string) $this->branchRate());
         $class->setAttribute('complexity', (string) $this->complexity);
 
-        if (!$this->methods) {
-            return $class;
-        }
-
         $methods = $domDocument->createElement('methods');
         $lines = $domDocument->createElement('lines');
+
         foreach ($this->methods as $method) {
             $methods->appendChild($method->wrapWith($domDocument));
 
@@ -133,6 +130,7 @@ class CoberturaClass
                 $lines->appendChild($line);
             }
         }
+
         $class->appendChild($methods);
         $class->appendChild($lines);
 

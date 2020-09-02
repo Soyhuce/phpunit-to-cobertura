@@ -49,6 +49,8 @@ class ConvertCommand implements Command
         $coberturaDocument = $translator->translate();
 
         $this->saveDocument($coberturaDocument);
+
+        echo "PHPUnit file {$this->inputFile} was successfully converted to Cobertura file {$this->outputFile}" . PHP_EOL;
     }
 
     protected function ensureInputFileExists(): void

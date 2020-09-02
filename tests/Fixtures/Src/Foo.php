@@ -18,7 +18,7 @@ class Foo
         }
 
         if ($bar) {
-            $result .= 'and bar';
+            $result .= ' and bar';
         }
 
         return $result;

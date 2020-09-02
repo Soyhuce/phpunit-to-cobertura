@@ -69,6 +69,7 @@ class CoberturaDocument
     public function output(): string
     {
         $this->wrap();
+
         if (!$this->document->validate()) {
             throw new MalformedReportGenerated();
         }

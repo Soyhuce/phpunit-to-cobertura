@@ -27,6 +27,9 @@
             "Soyhuce\\PhpunitToCobertura\\Tests\\": "tests/"
         }
     },
+    "bin": [
+        "phpunit-to-cobertura"
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {

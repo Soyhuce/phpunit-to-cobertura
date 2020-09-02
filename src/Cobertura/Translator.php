@@ -61,11 +61,7 @@ class Translator
             ->setExecutableLines($class['executableLines'])
             ->setExecutedBranches($class['executedBranches'])
             ->setExecutableBranches($class['executableBranches'])
-            ->setComplexity($class['executableLines']);
-
-        if ($coberturaClass->executedLines() === 0) {
-            return;
-        }
+            ->setComplexity($class['ccn']);
 
         foreach ($class['methods'] as $method) {
             $coberturaMethod = new CoberturaMethod($method['methodName']);
