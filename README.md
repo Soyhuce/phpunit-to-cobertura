@@ -19,7 +19,26 @@ That's all !
 
 # Generating a Cobertura coverage report
 
-TODO
+First, you need to run your phpunit tests with code coverage enabled. This needs to generate (at least) the code coverage in php format.
+```xml
+<coverage processUncoveredFiles="true">
+    <include>
+        <directory suffix=".php">src</directory>
+    </include>
+    <report>
+        <php outputFile="./phpunit/codeCoverage.php"/>
+    </report>
+</coverage>
+```
+
+Once done, you can convert the php code coverage into a Cobertura coverage.
+```
+./vendor/bin/phpunit-to-cobertura ./phpunit/codeCoverage.php ./phpunit/coberturaCoverage.xml
+```
+
+# Support
+
+Fow now, only PHPUnit 9.3 is supported.
 
 # Contributing
 
