@@ -1,0 +1,46 @@
+#!/usr/bin/env php
+<?php
+if (version_compare('7.3.0', PHP_VERSION, '>')) {
+    fwrite(
+        STDERR,
+        sprintf(
+            'This version of phpunit-to-cobertura is supported on PHP 7.3 and PHP 7.4.' . PHP_EOL .
+            'You are using PHP %s (%s).' . PHP_EOL,
+            PHP_VERSION,
+            PHP_BINARY
+        )
+    );
+
+    die(1);
+}
+
+$autoloadPaths = [
+    __DIR__ . '/../../autoload.php',
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/vendor/autoload.php',
+];
+
+foreach ($autoloadPaths as $file) {
+    if (file_exists($file)) {
+        define('PTC_COMPOSER_AUTOLOAD', $file);
+
+        break;
+    }
+}
+
+unset($autoloadPaths, $file);
+
+if (!defined('PTC_COMPOSER_AUTOLOAD')) {
+    fwrite(
+        STDERR,
+        'You need to set up the project dependencies using Composer:' . PHP_EOL . PHP_EOL .
+        '    composer install' . PHP_EOL . PHP_EOL .
+        'You can learn all about Composer on https://getcomposer.org/.' . PHP_EOL
+    );
+
+    die(1);
+}
+
+require PTC_COMPOSER_AUTOLOAD;
+
+Soyhuce\PhpunitToCobertura\Main::run();

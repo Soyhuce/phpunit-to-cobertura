@@ -9,7 +9,23 @@
             "email": "bastien.philippe@soyhuce.fr"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^7.3",
+        "phpunit/phpunit": "^9.3"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.17"
+    },
+    "autoload": {
+        "psr-4": {
+            "Soyhuce\\PhpunitToCobertura\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Soyhuce\\PhpunitToCobertura\\Tests\\": "tests/"
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
