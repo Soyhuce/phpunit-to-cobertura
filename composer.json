@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": "^7.3",
+        "ext-dom": "*",
         "phpunit/phpunit": "^9.3"
     },
     "require-dev": {

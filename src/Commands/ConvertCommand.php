@@ -2,7 +2,14 @@
 
 namespace Soyhuce\PhpunitToCobertura\Commands;
 
+use SebastianBergmann\CodeCoverage\CodeCoverage;
+use Soyhuce\PhpunitToCobertura\Cobertura\CoberturaDocument;
+use Soyhuce\PhpunitToCobertura\Cobertura\Translator;
 use Soyhuce\PhpunitToCobertura\Exceptions\BadCall;
+use Soyhuce\PhpunitToCobertura\Exceptions\CannotCreateDirectory;
+use Soyhuce\PhpunitToCobertura\Exceptions\InputFileDoesNotExist;
+use Soyhuce\PhpunitToCobertura\Exceptions\InputFileMustBePhpCodeCoverage;
+use Soyhuce\PhpunitToCobertura\Exceptions\InputFileNotReadable;
 
 class ConvertCommand implements Command
 {
@@ -34,7 +41,51 @@ class ConvertCommand implements Command
 
     public function run(): void
     {
-        var_dump($this->inputFile);
-        var_dump($this->outputFile);
+        $this->ensureInputFileExists();
+
+        $codeCoverage = $this->importCodeCoverage();
+
+        $translator = new Translator($codeCoverage);
+        $coberturaDocument = $translator->translate();
+
+        $this->saveDocument($coberturaDocument);
+    }
+
+    protected function ensureInputFileExists(): void
+    {
+        if (!is_file($this->inputFile)) {
+            throw new InputFileDoesNotExist($this->inputFile);
+        }
+        if (!is_readable($this->inputFile)) {
+            throw new InputFileNotReadable($this->inputFile);
+        }
+    }
+
+    protected function importCodeCoverage(): CodeCoverage
+    {
+        $codeCoverage = require $this->inputFile;
+
+        if (!$codeCoverage instanceof CodeCoverage) {
+            throw new InputFileMustBePhpCodeCoverage();
+        }
+
+        return $codeCoverage;
+    }
+
+    private function saveDocument(CoberturaDocument $coberturaDocument): void
+    {
+        if (!is_dir(dirname($this->outputFile))) {
+            $this->createOutputDirectory();
+        }
+
+        file_put_contents($this->outputFile, $coberturaDocument->output());
+    }
+
+    private function createOutputDirectory(): void
+    {
+        $dir = dirname($this->outputFile);
+        if (!@mkdir($dir, 0777, true) || !is_dir($dir)) {
+            throw new CannotCreateDirectory($dir);
+        }
     }
 }

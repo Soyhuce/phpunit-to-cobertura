@@ -49,4 +49,30 @@ class ConvertCommandTest extends TestCase
 
         $this->assertTrue(true);
     }
+
+    /** @test */
+    public function reportIsSuccessfullyGenerated(): void
+    {
+        $coverageFile = __DIR__ . '/../Fixtures/phpunit/codeCoverage.php';
+        if (is_file($coverageFile)) {
+            unlink($coverageFile);
+        }
+
+        $phpunit = __DIR__ . '/../../vendor/bin/phpunit';
+        $config = __DIR__ . '/../Fixtures/phpunit.xml';
+        shell_exec("${phpunit} --config=${config}");
+        $this->assertFileExists($coverageFile);
+
+        $coberturaFile = __DIR__ . '/../Fixtures/phpunit/cobertura.xml';
+        $command = new ConvertCommand([
+            'phpunit-to-cobertura',
+            $coverageFile,
+            $coberturaFile,
+        ]);
+
+        $command->run();
+
+        $this->assertFileExists($coberturaFile);
+        $this->assertFileEquals(__DIR__ . '/../Fixtures/expected/cobertura.stub', $coberturaFile);
+    }
 }

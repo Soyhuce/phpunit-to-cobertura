@@ -18,4 +18,7 @@
             <directory suffix=".php">src</directory>
         </include>
     </coverage>
+    <php>
+        <server name="REQUEST_TIME" value="1599000000"/>
+    </php>
 </phpunit>

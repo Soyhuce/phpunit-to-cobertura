@@ -7,6 +7,7 @@ use Soyhuce\PhpunitToCobertura\Commands\ConvertCommand;
 use Soyhuce\PhpunitToCobertura\Commands\HelpCommand;
 use Soyhuce\PhpunitToCobertura\Commands\VersionCommand;
 use Soyhuce\PhpunitToCobertura\Exceptions\RenderableException;
+use Soyhuce\PhpunitToCobertura\Exceptions\UnexpectedException;
 
 class Main
 {
@@ -23,11 +24,7 @@ class Main
 
             return 1;
         } catch (\Throwable $throwable) {
-            throw new \Exception(
-                $throwable->getMessage(),
-                $throwable->getCode(),
-                $throwable
-            );
+            throw new UnexpectedException($throwable);
         }
     }
 

@@ -43,4 +43,4 @@ if (!defined('PTC_COMPOSER_AUTOLOAD')) {
 
 require PTC_COMPOSER_AUTOLOAD;
 
-Soyhuce\PhpunitToCobertura\Main::run();
+die(Soyhuce\PhpunitToCobertura\Main::run());
