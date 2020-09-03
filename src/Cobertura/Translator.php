@@ -4,6 +4,7 @@ namespace Soyhuce\PhpunitToCobertura\Cobertura;
 
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\Node\File;
+use Soyhuce\PhpunitToCobertura\Exceptions\UnableToFindClassName;
 use Soyhuce\PhpunitToCobertura\Support\Utils;
 
 class Translator
@@ -51,8 +52,12 @@ class Translator
     {
         if (isset($class['package']['namespace'])) {
             $className = $class['package']['namespace'] . '\\' . $class['className'];
-        } else {
+        } elseif (isset($class['className'])) {
             $className = $class['className'];
+        } elseif (isset($class['traitName'])) {
+            $className = $class['traitName'];
+        } else {
+            throw new UnableToFindClassName($class);
         }
 
         $coberturaClass = $this->document->createClass($className);
