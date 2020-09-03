@@ -42,24 +42,16 @@ class CoberturaPackage
 
     public function executedLines(): int
     {
-        return array_reduce(
-            $this->classes,
-            function (int $total, CoberturaClass $class) {
-                return $total + $class->executedLines();
-            },
-            0
-        );
+        return Utils::arraySum($this->classes, function (CoberturaClass $class) {
+            return $class->executedLines();
+        });
     }
 
     public function executableLines(): int
     {
-        return array_reduce(
-            $this->classes,
-            function (int $total, CoberturaClass $class) {
-                return $total + $class->executableLines();
-            },
-            0
-        );
+        return Utils::arraySum($this->classes, function (CoberturaClass $class) {
+            return $class->executableLines();
+        });
     }
 
     private function lineRate(): float
@@ -69,24 +61,16 @@ class CoberturaPackage
 
     public function executedBranches(): int
     {
-        return array_reduce(
-            $this->classes,
-            function (int $total, CoberturaClass $class) {
-                return $total + $class->executedBranches();
-            },
-            0
-        );
+        return Utils::arraySum($this->classes, function (CoberturaClass $class) {
+            return $class->executedBranches();
+        });
     }
 
     public function executableBranches(): int
     {
-        return array_reduce(
-            $this->classes,
-            function (int $total, CoberturaClass $class) {
-                return $total + $class->executableBranches();
-            },
-            0
-        );
+        return Utils::arraySum($this->classes, function (CoberturaClass $class) {
+            return $class->executableBranches();
+        });
     }
 
     private function branchRate(): float
@@ -96,12 +80,8 @@ class CoberturaPackage
 
     public function complexity(): int
     {
-        return array_reduce(
-            $this->classes,
-            function (int $total, CoberturaClass $class) {
-                return $total + $class->complexity();
-            },
-            0
-        );
+        return Utils::arraySum($this->classes, function (CoberturaClass $class) {
+            return $class->complexity();
+        });
     }
 }

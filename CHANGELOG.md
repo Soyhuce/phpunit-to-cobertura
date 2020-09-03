@@ -7,7 +7,7 @@ All notable changes to `soyhuce/phpunit-to-cobertura` will be documented in this
 - Nothing
 
 ### Changed
-- Nothing
+- Refactoring
 
 ### Deprecated
 - Nothing

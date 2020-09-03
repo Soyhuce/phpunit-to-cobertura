@@ -118,56 +118,36 @@ class CoberturaDocument
 
     protected function executedLines(): int
     {
-        return array_reduce(
-            $this->packages,
-            function (int $total, CoberturaPackage $package) {
-                return $total + $package->executedLines();
-            },
-            0
-        );
+        return Utils::arraySum($this->packages, function (CoberturaPackage $package) {
+            return $package->executedLines();
+        });
     }
 
     protected function executableLines(): int
     {
-        return array_reduce(
-            $this->packages,
-            function (int $total, CoberturaPackage $package) {
-                return $total + $package->executableLines();
-            },
-            0
-        );
+        return Utils::arraySum($this->packages, function (CoberturaPackage $package) {
+            return $package->executableLines();
+        });
     }
 
     protected function executedBranches(): int
     {
-        return array_reduce(
-            $this->packages,
-            function (int $total, CoberturaPackage $package) {
-                return $total + $package->executedBranches();
-            },
-            0
-        );
+        return Utils::arraySum($this->packages, function (CoberturaPackage $package) {
+            return $package->executedLines();
+        });
     }
 
     protected function executableBranches(): int
     {
-        return array_reduce(
-            $this->packages,
-            function (int $total, CoberturaPackage $package) {
-                return $total + $package->executableBranches();
-            },
-            0
-        );
+        return Utils::arraySum($this->packages, function (CoberturaPackage $package) {
+            return $package->executableBranches();
+        });
     }
 
     protected function complexity(): int
     {
-        return array_reduce(
-            $this->packages,
-            function (int $total, CoberturaPackage $package) {
-                return $total + $package->complexity();
-            },
-            0
-        );
+        return Utils::arraySum($this->packages, function (CoberturaPackage $package) {
+            return $package->complexity();
+        });
     }
 }
