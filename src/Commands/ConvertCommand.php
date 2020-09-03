@@ -10,6 +10,7 @@ use Soyhuce\PhpunitToCobertura\Exceptions\CannotCreateDirectory;
 use Soyhuce\PhpunitToCobertura\Exceptions\InputFileDoesNotExist;
 use Soyhuce\PhpunitToCobertura\Exceptions\InputFileMustBePhpCodeCoverage;
 use Soyhuce\PhpunitToCobertura\Exceptions\InputFileNotReadable;
+use Soyhuce\PhpunitToCobertura\Support\Utils;
 
 class ConvertCommand implements Command
 {
@@ -25,7 +26,7 @@ class ConvertCommand implements Command
             if ($key === 0) {
                 return false;
             }
-            if (str_starts_with($value, '-')) {
+            if (Utils::strStartsWith($value, '-')) {
                 return false;
             }
 
