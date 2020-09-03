@@ -76,10 +76,6 @@ class CoberturaMethod
         $method->setAttribute('branch-rate', (string) $this->branchRate);
         $method->setAttribute('complexity', (string) $this->complexity);
 
-        if (!$this->lines) {
-            return $method;
-        }
-
         $lines = $domDocument->createElement('lines');
         foreach ($this->lines as $number => $hits) {
             $line = $domDocument->createElement('line');
