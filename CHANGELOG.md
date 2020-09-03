@@ -7,7 +7,7 @@ All notable changes to `soyhuce/phpunit-to-cobertura` will be documented in this
 - Nothing
 
 ### Changed
-- Refactoring
+- Nothing
 
 ### Deprecated
 - Nothing
@@ -16,10 +16,17 @@ All notable changes to `soyhuce/phpunit-to-cobertura` will be documented in this
 - Nothing
 
 ### Fixed
-- Support for files containing functions
+- Nothing
 
 ### Security
 - Nothing
+
+## [0.1.1] - 2020-09-03
+### Changed
+- Refactoring
+
+### Fixed
+- Support for files containing functions
 
 ## [0.1.0] - 2020-09-03
 ### Added
