@@ -122,6 +122,7 @@ class Translator
         foreach ($functions as $key => $function) {
             if ($previousKey === null) {
                 $previousKey = $key;
+
                 continue;
             }
             $functions[$previousKey]['endLine'] = $function['startLine'] - 1;
