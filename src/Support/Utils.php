@@ -11,7 +11,7 @@ class Utils
 
     public static function strStartsWith(string $haystack, string $needle): bool
     {
-        return 0 === \strncmp($haystack, $needle, \strlen($needle));
+        return \strncmp($haystack, $needle, \mb_strlen($needle)) === 0;
     }
 
     public static function strAfter(string $subject, string $search): string
