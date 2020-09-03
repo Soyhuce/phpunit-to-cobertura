@@ -4,7 +4,7 @@ All notable changes to `soyhuce/phpunit-to-cobertura` will be documented in this
 
 ## [Unreleased] - YYYY-MM-DD
 ### Added
-- Conversion from php code coverage to Cobertura xml format
+- Nothing
 
 ### Changed
 - Nothing
@@ -20,3 +20,8 @@ All notable changes to `soyhuce/phpunit-to-cobertura` will be documented in this
 
 ### Security
 - Nothing
+
+## [0.1.0] - 2020-09-03
+### Added
+- Conversion from php code coverage to Cobertura xml format
+
