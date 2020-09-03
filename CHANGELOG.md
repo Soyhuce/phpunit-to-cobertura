@@ -16,7 +16,7 @@ All notable changes to `soyhuce/phpunit-to-cobertura` will be documented in this
 - Nothing
 
 ### Fixed
-- Nothing
+- Support for files containing functions
 
 ### Security
 - Nothing

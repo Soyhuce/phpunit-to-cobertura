@@ -25,7 +25,10 @@
     "autoload-dev": {
         "psr-4": {
             "Soyhuce\\PhpunitToCobertura\\Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "tests/Fixtures/Src/helpers.php"
+        ]
     },
     "bin": [
         "phpunit-to-cobertura"
