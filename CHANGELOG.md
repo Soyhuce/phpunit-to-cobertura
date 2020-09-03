@@ -1,10 +1,10 @@
 # Changelog
 
-All notable changes to `soyhuce/next-ide-helper` will be documented in this file
+All notable changes to `soyhuce/phpunit-to-cobertura` will be documented in this file
 
 ## [Unreleased] - YYYY-MM-DD
 ### Added
-- Nothing
+- Conversion from php code coverage to Cobertura xml format
 
 ### Changed
 - Nothing
