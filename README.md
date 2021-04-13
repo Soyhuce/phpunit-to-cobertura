@@ -38,7 +38,7 @@ Once done, you can convert the php code coverage into a Cobertura coverage.
 
 # Support
 
-Fow now, only PHPUnit 9.3 is supported.
+Fow now, only PHPUnit 9.3 - 9.5 is supported.
 
 # Contributing
 
